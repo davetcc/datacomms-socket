@@ -10,6 +10,8 @@ import java.util.logging.Logger;
  * This is the server side of the teletype process, it reads lines of input
  * from the socket and echos it back to the client in upper case. This is
  * the simplest form of communication possible over a socket.
+ *
+ * Designed for use with the data communications section at http://www.thecoderscorner.com/data-comms
  */
 public class TeletypeServer {
     private final Logger logger = Logger.getLogger("SERVER");

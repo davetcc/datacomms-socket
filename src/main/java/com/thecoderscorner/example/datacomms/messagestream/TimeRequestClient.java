@@ -1,7 +1,5 @@
 package com.thecoderscorner.example.datacomms.messagestream;
 
-import sun.nio.ch.Net;
-
 import java.io.IOException;
 import java.net.InetSocketAddress;
 import java.nio.ByteBuffer;
@@ -12,6 +10,8 @@ import java.util.logging.Logger;
 /**
  * A time request client that makes the request to the server and waits for the result.
  * Once the result arrives the client exits.
+ *
+ * Designed for use with the data communications section at http://www.thecoderscorner.com/data-comms
  */
 public class TimeRequestClient {
     Logger logger = Logger.getLogger("CLIENT");

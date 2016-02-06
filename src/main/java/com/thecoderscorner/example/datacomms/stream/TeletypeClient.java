@@ -1,6 +1,5 @@
 package com.thecoderscorner.example.datacomms.stream;
 
-import java.io.BufferedInputStream;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -13,6 +12,8 @@ import java.util.logging.Logger;
  * input from stdin and sending it over the socket. Then another
  * thread reads the resulting text that is echoed back by the server
  * and prints it to the console.
+ *
+ * Designed for use with the data communications section at http://www.thecoderscorner.com/data-comms
  */
 public class TeletypeClient {
     private final Logger logger = Logger.getLogger("CLIENT");

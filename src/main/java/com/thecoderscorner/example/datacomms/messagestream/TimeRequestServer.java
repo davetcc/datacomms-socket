@@ -14,6 +14,8 @@ import java.util.logging.Logger;
 /**
  * This is the time request server, it accepts connections on the known port and
  * awaits a TimeRequestMsg. Once this is received, it responds with a TimeResponseMsg.
+ *
+ * Designed for use with the data communications section at http://www.thecoderscorner.com/data-comms
  */
 public class TimeRequestServer {
     // this is the port on which we will accept connections.
