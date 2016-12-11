@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.shape.*?>
+<GridPane xmlns="http://javafx.com/javafx/8.0.65" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.thecoderscorner.example.datacomms.rs232commands.ui.ArduinoControlController">
+  <columnConstraints>
+    <ColumnConstraints hgrow="SOMETIMES" maxWidth="291.0" minWidth="10.0" prefWidth="271.0" />
+    <ColumnConstraints hgrow="SOMETIMES" maxWidth="259.0" minWidth="10.0" prefWidth="236.0" />
+  </columnConstraints>
+  <rowConstraints>
+    <RowConstraints maxHeight="68.0" minHeight="10.0" prefHeight="31.0" vgrow="SOMETIMES" />
+    <RowConstraints maxHeight="91.0" minHeight="0.0" prefHeight="31.0" vgrow="SOMETIMES" />
+    <RowConstraints maxHeight="105.0" minHeight="9.0" prefHeight="47.0" vgrow="SOMETIMES" />
+      <RowConstraints maxHeight="133.0" minHeight="5.0" prefHeight="20.0" vgrow="SOMETIMES" />
+      <RowConstraints maxHeight="144.0" minHeight="10.0" prefHeight="41.0" vgrow="SOMETIMES" />
+  </rowConstraints>
+   <children>
+      <Label text="Send Message to display" />
+      <Label text="Toggle LED state" GridPane.rowIndex="1" />
+      <Label text="Button states" GridPane.rowIndex="2" />
+      <GridPane GridPane.columnIndex="1" GridPane.rowIndex="2">
+         <columnConstraints>
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+         </columnConstraints>
+         <rowConstraints>
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+         </rowConstraints>
+         <children>
+            <Circle fx:id="buttonStates1" fill="RED" radius="17.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="2.0" />
+            <Circle fx:id="buttonStates2" fill="RED" radius="17.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="2.0" GridPane.columnIndex="1" />
+            <Circle fx:id="buttonStates3" fill="RED" radius="17.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="2.0" GridPane.columnIndex="2" />
+            <Circle fx:id="buttonStates4" fill="RED" radius="17.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="2.0" GridPane.columnIndex="3" />
+            <Circle fx:id="buttonStates5" fill="RED" radius="17.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="2.0" GridPane.columnIndex="4" />
+            <Circle fx:id="buttonStates6" fill="RED" radius="17.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="2.0" GridPane.columnIndex="5" />
+         </children>
+      </GridPane>
+      <GridPane GridPane.columnIndex="1" GridPane.rowIndex="1">
+        <columnConstraints>
+          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+        </columnConstraints>
+        <rowConstraints>
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+        </rowConstraints>
+         <children>
+            <CheckBox fx:id="ledIndicator1" mnemonicParsing="false" onAction="#onLed1Changed" text="1" />
+            <CheckBox fx:id="ledIndicator2" mnemonicParsing="false" onAction="#onLed2Changed" text="2" GridPane.columnIndex="1" />
+            <CheckBox fx:id="ledIndicator3" mnemonicParsing="false" onAction="#onLedChanged3" text="3" GridPane.columnIndex="2" />
+            <CheckBox fx:id="ledIndicator4" mnemonicParsing="false" onAction="#onLedChanged4" text="4" GridPane.columnIndex="3" />
+            <CheckBox fx:id="ledIndicator5" mnemonicParsing="false" onAction="#onLedChanged5" text="5" GridPane.columnIndex="4" />
+            <CheckBox fx:id="ledIndicator6" mnemonicParsing="false" onAction="#onLedChanged6" text="6" GridPane.columnIndex="5" />
+         </children>
+      </GridPane>
+      <HBox spacing="4.0" GridPane.rowIndex="3">
+         <children>
+            <Label maxHeight="-Infinity" text="Connection status:" />
+            <Label fx:id="connectionStatus" text="Waiting" />
+         </children>
+         <GridPane.margin>
+            <Insets />
+         </GridPane.margin>
+      </HBox>
+      <HBox maxHeight="-Infinity" prefHeight="20.0" prefWidth="219.0" spacing="4.0" GridPane.columnIndex="1" GridPane.rowIndex="3" GridPane.valignment="TOP">
+         <children>
+            <Label text="Last Command Status:" />
+            <Label fx:id="lastCmdStatus" text="Nothing run" />
+         </children>
+      </HBox>
+      <BorderPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1">
+         <center>
+            <TextField fx:id="messageText" BorderPane.alignment="CENTER" />
+         </center>
+         <right>
+            <Button mnemonicParsing="false" onAction="#onSendPressed" text="Send" BorderPane.alignment="CENTER" />
+         </right>
+      </BorderPane>
+      <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.rowIndex="4" GridPane.valignment="BOTTOM">
+         <image>
+            <Image url="@../images/logo.png" />
+         </image>
+      </ImageView>
+   </children>
+   <opaqueInsets>
+      <Insets />
+   </opaqueInsets>
+   <padding>
+      <Insets bottom="4.0" left="4.0" right="4.0" top="4.0" />
+   </padding>
+</GridPane>

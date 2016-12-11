@@ -1,7 +1,0 @@
-com\thecoderscorner\example\datacomms\messagestream\TimeRequestClient.class
-com\thecoderscorner\example\datacomms\messagestream\TimeResponseMsg.class
-com\thecoderscorner\example\datacomms\messagestream\TimeRequestMsg.class
-com\thecoderscorner\example\datacomms\messagestream\TimeRequestServer.class
-com\thecoderscorner\example\datacomms\stream\TeletypeServer.class
-com\thecoderscorner\example\datacomms\stream\TeletypeClient.class
-com\thecoderscorner\example\datacomms\messagestream\Message.class
