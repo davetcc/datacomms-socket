@@ -2,13 +2,24 @@
 #include "LiquidCrystal.h"
 #include "CommandParser.h"
 
+// these are the pins to which you have connected your switches
 #define BUTTON1_PIN  24
 #define BUTTON2_PIN  25
 #define BUTTON3_PIN  26
-#define DISPLAY_CONTRAST_PIN 3
+
+// this is the speed at which to initiate the serial over USB connection 
 #define PORT_SPEED 9600
 
-LiquidCrystal lcd(28, 29, 30, 31, 32, 33);
+// this is the standard configuration of the LCD display. Change the pin assignments
+#define RS_PIN 28
+#define ENABLE_PIN 29
+#define DISPLAY_CONTRAST_PIN 3
+#define D0_PIN 30
+#define D1_PIN 31
+#define D2_PIN 32
+#define D3_PIN 33
+LiquidCrystal lcd(RS_PIN, ENABLE_PIN, D0_PIN, D1_PIN, D2_PIN, D3_PIN);
+
 ErrorCondition lastExecutionStatus = OK;
 uint16_t ledStates;
 
@@ -23,6 +34,7 @@ void setup()
 	pinMode(DISPLAY_CONTRAST_PIN, OUTPUT);
 	analogWrite(DISPLAY_CONTRAST_PIN, 30);
 
+	// and set the pins with switches connected as inputs.
 	pinMode(BUTTON1_PIN, INPUT);
 	pinMode(BUTTON2_PIN, INPUT);
 	pinMode(BUTTON3_PIN, INPUT);
@@ -34,7 +46,7 @@ void setup()
 
 void loop()
 {
-
+	// intialise the text on the screen
 	lcd.setCursor(0, 0);
 	lcd.print("Comms Test         ");
 
@@ -63,10 +75,10 @@ ErrorCondition commandRecieved(const char* command) {
 	}
 
 	if (strcmp(cmd, "led")==0) {
-		return ledCommandReceived(parser);
+		return handleLedCommand(parser);
 	}
 	else if (strcmp(cmd, "print")==0) {
-		return printCommandReceived(parser);
+		return handlePrintCommand(parser);
 	}
 	else {
 		return CMD_NOT_FOUND;
@@ -75,7 +87,7 @@ ErrorCondition commandRecieved(const char* command) {
 
 // We've been asked to print something, so clear the 2nd line and print
 // any parameters that were sent with the command.
-ErrorCondition printCommandReceived(Parser parser) {
+ErrorCondition handlePrintCommand(Parser parser) {
 	// clear the line first.
 	lcd.setCursor(0, 1);
 	lcd.print("                   ");
@@ -93,7 +105,7 @@ ErrorCondition printCommandReceived(Parser parser) {
 
 // We have recevied a command to turn on or off an LED. We store the led status
 // in a single integer, one LED per bit so we need to update the integer.
-ErrorCondition ledCommandReceived(Parser parser) {
+ErrorCondition handleLedCommand(Parser parser) {
 	// first read the requested LED, then get it into bitwise format.
 	const char* str = parser.nextWord();
 	uint16_t ledChange = (int)strtol(str, NULL, 10);
@@ -143,7 +155,8 @@ void sendStatus(ErrorCondition cond) {
 }
 
 // This takes the state of each of the buttons and converts it into a bitwise
-// integer that is easier to pass between processes.
+// integer that is easier to pass between processes. This saves space by packing
+// all the bits into a single integer.
 int getButtonStates() {
 	int button1 = digitalRead(BUTTON1_PIN);
 	int button2 = digitalRead(BUTTON2_PIN);
