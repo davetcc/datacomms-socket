@@ -2,6 +2,7 @@ package com.thecoderscorner.example.datacomms.rs232commands.ui;
 
 import com.thecoderscorner.example.datacomms.rs232commands.protocol.ArduinoInterfaceControl;
 import com.thecoderscorner.example.datacomms.rs232commands.protocol.SimpleRS232ArduinoController;
+import com.thecoderscorner.example.datacomms.rs232commands.protocol.mockserver.SimulatedArduinoControl;
 import gnu.io.NRSerialPort;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
