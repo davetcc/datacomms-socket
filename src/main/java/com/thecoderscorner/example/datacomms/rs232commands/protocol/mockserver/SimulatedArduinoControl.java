@@ -1,4 +1,4 @@
-package com.thecoderscorner.example.datacomms.rs232commands.mockserver;
+package com.thecoderscorner.example.datacomms.rs232commands.protocol.mockserver;
 
 import com.thecoderscorner.example.datacomms.rs232commands.protocol.ArduinoInterfaceControl;
 import com.thecoderscorner.example.datacomms.rs232commands.protocol.ArduinoStatusReply;

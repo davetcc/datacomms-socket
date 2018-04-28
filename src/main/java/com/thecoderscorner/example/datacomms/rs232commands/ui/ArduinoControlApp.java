@@ -45,6 +45,7 @@ public class ArduinoControlApp extends Application {
     }
 
     private void presentError() {
+        // just show an error and get outa here basically.
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle("Not able to start");
         alert.setHeaderText("Serial port not selected");
@@ -53,11 +54,14 @@ public class ArduinoControlApp extends Application {
     }
 
     private void presentConnectionDialog(Window owner) throws Exception {
+
+        // create the connectivity window, where the comms port can be chosen.
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/ui/SerialConfiguration.fxml"));
         Pane myPane = loader.load();
         Stage dialogStage = new Stage();
 
-        SerialCommunicationController controller = loader.<SerialCommunicationController>getController();
+        // get the dialog controller and initialise it.
+        SerialCommunicationController controller = loader.getController();
         controller.initialise();
         controller.setDialogStage(dialogStage);
 

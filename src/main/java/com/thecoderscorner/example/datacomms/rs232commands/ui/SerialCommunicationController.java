@@ -1,6 +1,5 @@
 package com.thecoderscorner.example.datacomms.rs232commands.ui;
 
-import com.thecoderscorner.example.datacomms.rs232commands.mockserver.SimulatedArduinoControl;
 import com.thecoderscorner.example.datacomms.rs232commands.protocol.ArduinoInterfaceControl;
 import com.thecoderscorner.example.datacomms.rs232commands.protocol.SimpleRS232ArduinoController;
 import gnu.io.NRSerialPort;
@@ -34,11 +33,14 @@ public class SerialCommunicationController {
     }
 
     public void connectPressed(ActionEvent actionEvent) {
+
+        // someone pressed connect, check the an acceptable combination is selected
         if(!settingCombinationsAreAllowed()) {
             showSerialSettingErrorDialog();
             return;
         }
 
+        // now we create either the simulator that allows running without an Arduino, or the real interface.
         if(serialPortCombo.getValue().equals(LOCAL_SIMULATOR)) {
             arduinoInterface = new SimulatedArduinoControl(serialPortCombo.getValue(), baudRateCombo.getValue());
         }

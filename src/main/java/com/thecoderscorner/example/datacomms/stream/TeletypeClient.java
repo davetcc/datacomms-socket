@@ -13,7 +13,7 @@ import java.util.logging.Logger;
  * thread reads the resulting text that is echoed back by the server
  * and prints it to the console.
  *
- * Designed for use with the data communications section at http://www.thecoderscorner.com/data-comms
+ * Designed for use with the data communications section at https://www.thecoderscorner.com/data-comms
  */
 public class TeletypeClient {
     private final Logger logger = Logger.getLogger("CLIENT");
